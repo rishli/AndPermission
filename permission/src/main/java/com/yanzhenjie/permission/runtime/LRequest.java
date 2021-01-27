@@ -15,7 +15,8 @@
  */
 package com.yanzhenjie.permission.runtime;
 
-import androidx.annotation.NonNull;
+
+import android.support.annotation.NonNull;
 
 import com.yanzhenjie.permission.checker.PermissionChecker;
 import com.yanzhenjie.permission.checker.StrictChecker;

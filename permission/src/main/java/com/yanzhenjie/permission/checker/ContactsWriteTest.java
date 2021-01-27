@@ -21,8 +21,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.support.annotation.Nullable;
 
-import androidx.annotation.Nullable;
 
 /**
  * Created by Zhenjie Yan on 2018/1/14.

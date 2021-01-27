@@ -10,6 +10,33 @@ android {
     }
 
     resourcePrefix 'permission'
+
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+}
+
+static def releaseDate() {
+    return new Date().format("yyyyMMdd")
+}
+
+afterEvaluate {
+    // for app test, copy the final aar to application libs
+    android.libraryVariants.all { variant ->
+        File outputFile = variant.outputs.first().outputFile
+        tasks.named("assemble${variant.name.capitalize()}").configure {
+            doLast {
+                copy {
+                    from outputFile
+                    into "aar_output"
+                    def releaseDate = releaseDate()
+                    def versionName = rootProject.ext.android.versionName
+                    rename outputFile.name, "AndPermission-${releaseDate}-v${versionName}-without-androidx.aar"
+                }
+            }
+        }
+    }
 }
 
 dependencies {
